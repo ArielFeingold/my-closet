@@ -1,0 +1,24 @@
+# when a user logs in to the app he can:
+
+  1. view outfits
+  2. create new outfit
+  2. add items
+
+  1. view outfits
+    * shows a list of previously created outfits with links to each outfit
+    * when user chooses an outfit he goes to it's page there he can edit the outfit
+    * user can then choose to update the outfit or generate a new one
+
+  2. create new outfit
+      * displays a list of item categories
+        - after user chose category generates a list of items sorted by type
+        - user can choose an item and add it to the outfit
+        - user can go into the outfit and delete items. once he is ready he can save the outfit.
+
+  3. add items
+    * user can create a new item
+
+  4. view items
+    * user can view all the items
+    * user can go to an item's page
+    * user can edit and delete item.
