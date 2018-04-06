@@ -1,6 +1,6 @@
 class CreateOutfitItems < ActiveRecord::Migration[5.1]
   def change
-    create_table :user_items do |t|
+    create_table :outfit_items do |t|
       t.integer :outfit_id
       t.integer :item_id
     end

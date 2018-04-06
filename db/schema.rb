@@ -20,14 +20,14 @@ ActiveRecord::Schema.define(version: 20180406171108) do
     t.integer "user_id"
   end
 
+  create_table "outfit_items", force: :cascade do |t|
+    t.integer "outfit_id"
+    t.integer "item_id"
+  end
+
   create_table "outfits", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
-  end
-
-  create_table "user_items", force: :cascade do |t|
-    t.integer "outfit_id"
-    t.integer "item_id"
   end
 
   create_table "users", force: :cascade do |t|
