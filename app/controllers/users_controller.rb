@@ -21,11 +21,13 @@ class UsersController < ApplicationController
     redirect to "/users/#{@user.slug}"
   end
 
-  # get '/logout' do
-  #   if logged_in?
-  #     session.destroy
-  #     redirect to '/login'
-  #   else
-  #     redirect to '/'
-  #   end
-  # end
+
+
+  get '/logout' do
+    if logged_in?
+      session.destroy
+      redirect to '/login'
+    else
+      redirect to '/'
+    end
+  end
