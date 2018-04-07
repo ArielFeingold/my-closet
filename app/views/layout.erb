@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Fwitter</title>
+    <title>My Closet</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
   </head>
@@ -9,17 +9,17 @@
     <nav>
       <% if logged_in? %>
 
-        <a href="/outfit/new"> Create Outfit </a>
+        <a href="/outfits/outfits"> Outfits </a> &nbsp
+        <a href="/items/items"> Items </a> &nbsp
         <a href="/logout"> Log Out </a>
 
       <% else %>
-        <a href="/signup">Sign Up</a>
-        <a href="/login"> Sign In </a>
+
       <%end %>
 
     </nav>
     <div class="container">
-      <h1>Fwitter</h1>
+      <h1>My Closet</h1>
       <%= yield %>
 
 

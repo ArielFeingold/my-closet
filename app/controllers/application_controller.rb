@@ -9,10 +9,6 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "my_closet_secret"
   end
 
-  get '/' do
-    erb :index
-  end
-
   helpers do
     def logged_in?
       !!current_user
@@ -20,14 +16,6 @@ class ApplicationController < Sinatra::Base
 
     def current_user
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-    end
-
-    get '/login' do
-      if self.logged_in?
-        redierct to '/usesrs/:slug'
-      else
-        erb :'users/login'
-    end
     end
 
   end
