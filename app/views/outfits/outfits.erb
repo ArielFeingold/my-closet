@@ -1,3 +1,8 @@
 <h1>Your Outfits</h1>
 
-<%
+
+<%@outfits.each do |outfit|%>
+<ul>
+  <li><a href="/outfits/<%=outfit.id%>"><%=outfit.name%></a></li>
+</ul>
+<%end%>
