@@ -19,13 +19,27 @@ class ItemsController < ApplicationController
     end
   end
 
+  get '/items/:id/edit' do
+    @item_id = session[:item_id]
+    @item = Item.all[@item_id - 1]
+    erb :'items/edit_item'
+  end
+
   get '/items/:id' do
     if logged_in?
       @item = Item.find_by(params)
+      session[:item_id] = @item.id
       erb :'items/show'
     else
       redirect to '/login'
     end
+  end
+
+
+
+  patch '/items/:id' do
+    binding.pry
+    @item = Item.find_by()
   end
 
 end

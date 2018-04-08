@@ -4,4 +4,4 @@ Category: <%=@item.category%> <br>
 Type: <%=@item.item_type%> <br>
 Color: <%=@item.color%>
 
-<a href="/items/:id/edit"></a>
+<a href="/items/<%=session[:item_id]%>/edit">Edit Item</a>
