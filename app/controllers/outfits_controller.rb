@@ -1,27 +1,41 @@
 class OutfitsController < ApplicationController
 
   get '/outfits' do
-    @user = User.find_by(:id => session[:user_id])
-    @outfits = @user.outfits
-    erb :'outfits/outfits'
+    if logged_in?
+      @user = User.find_by(:id => session[:user_id])
+      @outfits = @user.outfits
+      erb :'outfits/outfits'
+    else
+      redirect to '/login'
+    end
   end
 
   post '/outfits' do
-    @outfit = Outfit.new(params[:outfit])
-    @outfit.user_id = session[:user_id]
-    @outfit.save
-    redirect to '/outfits'
+    if logged_in?
+      @outfit = Outfit.new(params[:outfit])
+      @outfit.user_id = session[:user_id]
+      @outfit.save
+      redirect to '/outfits'
+    else
+      redirect to '/login'
+    end
   end
 
   get '/outfits/:id' do
-    @outfit = Outfit.find_by(params[:id])
-    # binding.pry
-    erb :'outfits/show'
+    if logged_in?
+      @outfit = Outfit.find_by(params[:id])
+      erb :'outfits/show'
+    else
+      redirect to '/login'
   end
 
   get '/outfits/new' do
-    @user = User.find_by(:id => session[:user_id])
-    erb :'outfits/new'
+    if logged_in?
+      @user = User.find_by(:id => session[:user_id])
+      erb :'outfits/new'
+    else
+      redirect to '/login'
+    end
   end
 
 
