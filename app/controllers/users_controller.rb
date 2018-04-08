@@ -8,7 +8,8 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'users/create_user', locals: {message: "Please sign up before you sign in"}
     else
-      erb :'users/show'
+      @user = User.find_by(:id => session[:user_id])
+      redirect to "/users/#{@user.slug}"
     end
   end
 

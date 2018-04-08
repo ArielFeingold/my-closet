@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406171108) do
+ActiveRecord::Schema.define(version: 20180408141313) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
-    t.string "catagory"
-    t.string "ptype"
+    t.string "category"
+    t.string "item_type"
     t.string "color"
     t.integer "user_id"
   end
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20180406171108) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name"
     t.string "username"
     t.string "email"
     t.string "password_digest"

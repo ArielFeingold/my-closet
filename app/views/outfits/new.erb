@@ -1,0 +1,16 @@
+<h1>Create Outfit</h1>
+
+<form action="/outfits" method="POST">
+  <lable>Name</label>
+    <input type="text" name="outfit[name]"><br></br>
+
+  <label><h4>Items</h4></label><br>
+    <% @user.items.all.each do |item| %>
+      <input type="checkbox" name="outfit[item_ids][]" value="<%= item.id %>">
+      <label><%= item.name %></label><br>
+    <% end %>
+
+  <input type="submit" value="Create New Outfit">
+</form>
+
+<a href="/items/new">Add New item</a>

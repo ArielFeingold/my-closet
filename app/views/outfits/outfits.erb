@@ -1,9 +1,3 @@
+<h1>Your Outfits</h1>
 
-<table>
-  <th>Your Outfits</th>
-  <tr>
-    <% @outfits.all.each do |outfit| %>
-      <td align="center"><a href="/outfits/<%= outfit.id %>"><%= outfit.name %></a></td>
-  </tr>
-  <% end %>
-</table>
+<%
