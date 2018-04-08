@@ -21,18 +21,19 @@ class OutfitsController < ApplicationController
     end
   end
 
-  get '/outfits/:id' do
-    if logged_in?
-      @outfit = Outfit.find_by(params[:id])
-      erb :'outfits/show'
-    else
-      redirect to '/login'
-  end
-
   get '/outfits/new' do
     if logged_in?
       @user = User.find_by(:id => session[:user_id])
       erb :'outfits/new'
+    else
+      redirect to '/login'
+    end
+  end
+
+  get '/outfits/:id' do
+    if logged_in?
+      @outfit = Outfit.find_by(params[:id])
+      erb :'outfits/show'
     else
       redirect to '/login'
     end
