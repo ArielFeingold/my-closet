@@ -1,0 +1,23 @@
+<h1>Edit Outfit</h1>
+
+<form action="/outfits/<%=@outfit.id%>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+
+  <lable>Change Name</label>
+    <input type="text" name="outfit[name]" value ="<%=@outfit.name%>"><br></br>
+
+  <lable>Remove Items</label>
+    <% @outfit.items.each do |item| %>
+      <input type="checkbox" name="outfit[delete_items][]" value="<%= item.id %>">
+      <label><%= item.name %>, <%=item.category%></label><br>
+    <% end %>
+
+  <label><h4>Add Items</h4></label> <a href="/items/new">Add New item</a> <br>
+
+    <% @user.items.all.each do |item| %>
+      <input type="checkbox" name="outfit[add_items][]" value="<%= item.id %>">
+      <label><%= item.name %>, <%=item.category%></label><br>
+    <% end %>
+
+  <input type="submit" value="Edit Outfit">
+</form>
