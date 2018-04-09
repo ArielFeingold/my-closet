@@ -6,9 +6,9 @@
 </ul>
 <%end%>
 
-<a href="/outfits/<%=@outfit.id%>/edit">Edit Outfit</a>
+<a href="/outfits/<%=@outfit.slug%>/edit">Edit Outfit</a>
 
-<form method="post" action="/outfits/<%=@outfit.id%>/delete">
+<form method="post" action="/outfits/<%=@outfit.slug%>/delete">
 <input id="hidden" type="hidden" name="_method" value="DELETE">
 <input type="submit" value="Delete outfit">
 </form>

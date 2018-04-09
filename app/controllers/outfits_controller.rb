@@ -30,24 +30,24 @@ class OutfitsController < ApplicationController
   end
 end
 
-  get '/outfits/:id' do
+  get '/outfits/:slug' do
     if logged_in?
-      @outfit = Outfit.find_by(params)
+      @outfit = Outfit.find_by_slug(params[:slug])
       erb :'/outfits/show'
     else
       redirect to '/login'
     end
   end
 
-  get '/outfits/:id/edit' do
+  get '/outfits/:slug/edit' do
     @user = User.find_by(:id => session[:user_id])
-    @outfit = Outfit.find_by(params)
+    @outfit = Outfit.find_by_slug(params[:slug])
     erb :'outfits/edit_outfit'
   end
 
-  patch '/outfits/:id' do
+  patch '/outfits/:slug' do
     if logged_in?
-      @outfit = Outfit.find_by(:id=> params[:id])
+      @outfit = Outfit.find_by_slug(params[:slug])
       @delete = params[:outfit][:delete_items]
       @add = params[:outfit][:add_items]
       @items = @outfit.items
@@ -69,9 +69,9 @@ end
             end
           end
         end
-        redirect to "/outfits/#{@outfit.id}"
+        redirect to "/outfits/#{@outfit.slug}"
       else
-        redirect to "/outfits/#{@outfit.id}/edit"
+        redirect to "/outfits/#{@outfit.slug}/edit"
       end
     redirect to '/login'
     end
@@ -79,7 +79,7 @@ end
 
   delete '/outfits/:id/delete' do
     if logged_in?
-      @outfit = Outfit.find_by_id(params[:id])
+      @outfit = Outfit.find_by_slug(params[:slug])
       if @outfit && @outfit.user == current_user
         @outfit.delete
       end
