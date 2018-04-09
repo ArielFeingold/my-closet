@@ -1,10 +1,12 @@
 <h1>Your Outfits</h1>
 
-
-<%@outfits.each do |outfit|%>
-<ul>
-  <li><a href="/outfits/<%=outfit.id%>"><%=outfit.name%></a></li>
-</ul>
-<%end%>
-
+<%if @outfits.size == 0%>
+  <h3>No Outfits to show. Click below to create your first outfit</h3>
+<% else %>
+  <%@outfits.each do |outfit|%>
+  <ul>
+    <li><a href="/outfits/<%=outfit.id%>"><%=outfit.name%></a></li>
+  </ul>
+  <%end%>
+ <% end %>
 <a href="/outfits/new">Create New Outfit</a>
