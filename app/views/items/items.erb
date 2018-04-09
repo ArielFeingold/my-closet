@@ -5,7 +5,7 @@
     <h3><%=c%></h3>
     <%items = @items.find_all{|item| item.category == c}%>
     <%items.each do |i|%>
-      <li><a href="/items/<%=i.id%>"><%=i.name%></a> </li>
+      <li><a href="/items/<%=i.slug%>"><%=i.name%></a> </li>
     <% end %>
     </ul>
   <% end %>

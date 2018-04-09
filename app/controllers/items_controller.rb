@@ -34,34 +34,34 @@ class ItemsController < ApplicationController
     end
   end
 
-  get '/items/:id' do
+  get '/items/:slug' do
     if logged_in?
-      @item = Item.find_by(params)
+      @item = Item.find_by_slug(params[:slug])
       erb :'items/show'
     else
       redirect to '/login'
     end
   end
 
-  get '/items/:id/edit' do
-    @item = Item.find_by(params)
+  get '/items/:slug/edit' do
+    @item = Item.find_by_slug(params[:slug])
     erb :'items/edit_item'
   end
 
-  patch '/items/:id' do
+  patch '/items/:slug' do
     if logged_in?
-      @item = Item.find_by(:id=> params[:id])
+      @item = Item.find_by_slug(params[:slug])
       if @item && @item.user == current_user
         @item.update(name: params[:name], category: params[:category], item_type: params[:item_type], color: params[:color])
-        redirect to "/items/#{@item.id}"
+        redirect to "/items/#{@item.slug}"
       else
-        redirect to "/items/#{@item.id}/edit"
+        redirect to "/items/#{@item.slug}/edit"
       end
     redirect to '/login'
     end
   end
 
-  delete '/items/:id/delete' do
+  delete '/items/:slug/delete' do
     if logged_in?
       @item = Item.find_by_id(params[:id])
       if @item && @item.user == current_user

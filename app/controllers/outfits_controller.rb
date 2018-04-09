@@ -77,7 +77,7 @@ end
     end
   end
 
-  delete '/outfits/:id/delete' do
+  delete '/outfits/:slug/delete' do
     if logged_in?
       @outfit = Outfit.find_by_slug(params[:slug])
       if @outfit && @outfit.user == current_user

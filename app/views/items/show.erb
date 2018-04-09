@@ -4,11 +4,11 @@ Category: <%=@item.category%> <br>
 Type: <%=@item.item_type%> <br>
 Color: <%=@item.color%><br>
 
-<a href="/items/<%=@item.id%>/edit">Edit Item</a><br>
+<a href="/items/<%=@item.slug%>/edit">Edit Item</a><br>
 <a href="/outfits">Go To My Outfits</a><br>
 <a href="/items/new">Add an Item</a>
 
-<form method="post" action="/items/<%=@item.id%>/delete">
+<form method="post" action="/items/<%=@item.slug%>/delete">
 <input id="hidden" type="hidden" name="_method" value="DELETE">
 <input type="submit" value="Delete Item">
 </form>
