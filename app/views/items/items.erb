@@ -1,11 +1,15 @@
 <h1>Your Items</h1>
 
+<%if @items.size == 0%>
+  <h3>No Items to show. Click below to create your first Item</h3>
+<% else %>
 <%@categories.each do |c|%>
-  <ul>
     <h3><%=c%></h3>
     <%items = @items.find_all{|item| item.category == c}%>
     <%items.each do |i|%>
       <li><a href="/items/<%=i.slug%>"><%=i.name%></a> </li>
     <% end %>
-    </ul>
   <% end %>
+<% end %>
+
+<a href="/items/new">Create New Item</a>

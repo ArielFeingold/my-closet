@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
       @item = Item.new(params)
       @item.user_id = session[:user_id]
       @item.save
-      redirect to "/items/#{@item.id}"
+      redirect to "/items/#{@item.slug}"
     else
       redirect to '/login'
     end
