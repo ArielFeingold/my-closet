@@ -1,0 +1,8 @@
+<h1>Edit User</h1>
+
+<form action="/users/<%=@user.slug%>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+  <p>Name: <input type="text" name="name" value="<%@user.name%>"></p>
+  <p>Password: <input type="text" name="password" value="<%@user.password%>"></p>
+  <input class="btn btn-primary" type="submit" Value="Update">
+</form>

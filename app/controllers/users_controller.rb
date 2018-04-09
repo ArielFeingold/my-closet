@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 
   get '/' do
-    erb :index
+    if logged_in?
+      @user = User.find_by(:id => session[:user_id])
+      redirect to "/users/#{@user.slug}"
+    else
+      erb :index
+    end
   end
 
   get '/signup' do
@@ -47,8 +52,26 @@ class UsersController < ApplicationController
     end
   end
 
-    get '/users/:slug' do
-      @user = User.find_by_slug(params[:slug])
-      erb :'users/show'
-    end
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    erb :'users/show'
   end
+
+  get '/users/:slug/edit' do
+    @user = User.find_by_slug(params[:slug])
+    erb :'users/edit_user'
+  end
+
+  patch '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    if params[:name] != ""
+      @user.name = params[:name]
+    end
+    if params[:password] !=""
+      @user.password = params[:password]
+    end
+    @user.save
+    redirect to "/users/#{@user.slug}"
+  end
+
+end
