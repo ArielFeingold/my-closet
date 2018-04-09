@@ -2,6 +2,7 @@
 
 Category: <%=@item.category%> <br>
 Type: <%=@item.item_type%> <br>
-Color: <%=@item.color%>
+Color: <%=@item.color%><br>
 
-<a href="/items/<%=session[:item_id]%>/edit">Edit Item</a>
+<a href="/items/<%=@item.id%>/edit">Edit Item</a><br>
+<a href="/outfits">Go To My Outfits</a>

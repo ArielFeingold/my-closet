@@ -32,7 +32,7 @@ class OutfitsController < ApplicationController
 
   get '/outfits/:id' do
     if logged_in?
-      @outfit = Outfit.find_by(params[:id])
+      @outfit = Outfit.find_by(params)
       erb :'outfits/show'
     else
       redirect to '/login'

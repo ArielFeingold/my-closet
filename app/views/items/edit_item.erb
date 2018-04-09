@@ -1,20 +1,24 @@
-<h1>Edit Item</h1>
+<h1>Edit <%=@item.name%></h1>
 
-<form action="/items" method="POST">
+<form action="/items/<%=@item.id%>" method="POST">
     <input type="hidden" name="_method" value="PATCH">
+    <label>Name</label><br>
+    <input type="text" name="name" value:"<%=@item.name%>"/><br>
     <label>Category</label><br>
     <select name="category">
     <option value="shirt">Shirt</option>
     <option value="coat">Coat</option>
     <option value="jacket">Jacket</option>
     <option value="pants">Pants</option>
+    <option value="dress">Dress</option>
+    <option value="skirt">Skirt</option>
     <option value="shoes">Shoes</option>
     <option value="accessories">Accessories</option>
   </select><br>
     <label>Type</label><br>
-    <input type="text" name="item_type" /><br>
+    <input type="text" name="item_type" value:"<%=@item.item_type%>"/><br>
     <label>Color</label><br>
-    <input type="text" name="item_type" /><br>
+    <input type="text" name="color" value="<%=@item.color%>"/><br>
 
     <input type="submit" value="Update Item">
 </form>

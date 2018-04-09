@@ -20,26 +20,32 @@ class ItemsController < ApplicationController
   end
 
   get '/items/:id/edit' do
-    @item_id = session[:item_id]
-    @item = Item.all[@item_id - 1]
+    @item = Item.find_by(params)
     erb :'items/edit_item'
   end
 
   get '/items/:id' do
     if logged_in?
       @item = Item.find_by(params)
-      session[:item_id] = @item.id
       erb :'items/show'
     else
       redirect to '/login'
     end
   end
 
-
-
   patch '/items/:id' do
-    binding.pry
-    @item = Item.find_by()
-  end
+    if logged_in?
+      @item = Item.find_by(:id=> params[:id])
+        if @item && @item.user == current_user
+          @item.update(name: params[:name], category: params[:category], item_type: params[:item_type], color: params[:color])
+          redirect to "/items/#{@item.id}"
+        else
+          redirect to "/items/#{@item.id}/edit"
+        end
+      else
+        redirect to '/login'
+      end
+    end
+
 
 end
