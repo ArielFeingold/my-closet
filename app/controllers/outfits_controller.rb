@@ -77,5 +77,17 @@ end
     end
   end
 
+  delete '/outfits/:id/delete' do
+    if logged_in?
+      @outfit = Outfit.find_by_id(params[:id])
+      if @outfit && @outfit.user == current_user
+        @outfit.delete
+      end
+      redirect to '/outfits'
+    else
+      redirect to '/login'
+    end
+  end
+
 
 end
