@@ -13,7 +13,7 @@ class OutfitsController < ApplicationController
   get '/outfits/new' do
     if logged_in?
       @user = User.find_by(:id => session[:user_id])
-      erb :'outfits/new'
+      erb :'outfits/create_outfit'
     else
       redirect to '/login'
     end
