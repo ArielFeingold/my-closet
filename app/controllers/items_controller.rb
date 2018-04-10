@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
       @item = Item.new(params)
       @item.user_id = session[:user_id]
       @item.save
-      redirect to "/items/#{@item.slug}"
+      redirect to "/items"
     else
       redirect to '/login'
     end
@@ -54,7 +54,8 @@ class ItemsController < ApplicationController
 
   patch '/items/:slug' do
     if logged_in?
-      @item = Item.find_by_slug(params[:slug])
+      @user_items = Item.all.find_all{|item| item.user_id == session[:user_id]}
+      @item = @user_items.find{|item| item.slug == params[:slug]}
       if @item && @item.user == current_user
         @item.update(name: params[:name], category: params[:category], item_type: params[:item_type], color: params[:color])
         redirect to "/items/#{@item.slug}"
