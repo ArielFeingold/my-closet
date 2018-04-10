@@ -40,9 +40,13 @@ end
   end
 
   get '/outfits/:slug/edit' do
-    @user = User.find_by(:id => session[:user_id])
-    @outfit = Outfit.find_by_slug(params[:slug])
-    erb :'outfits/edit_outfit'
+    if logged_in?
+      @user = User.find_by(:id => session[:user_id])
+      @outfit = Outfit.find_by_slug(params[:slug])
+      erb :'outfits/edit_outfit'
+    else
+      redirect to '/login'
+    end
   end
 
   patch '/outfits/:slug' do

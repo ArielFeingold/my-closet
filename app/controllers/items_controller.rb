@@ -44,8 +44,12 @@ class ItemsController < ApplicationController
   end
 
   get '/items/:slug/edit' do
-    @item = Item.find_by_slug(params[:slug])
-    erb :'items/edit_item'
+    if logged_in?
+      @item = Item.find_by_slug(params[:slug])
+      erb :'items/edit_item'
+    else
+      redirect to '/login'
+    end
   end
 
   patch '/items/:slug' do
