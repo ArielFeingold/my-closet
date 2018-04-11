@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   get '/signup' do
     if !logged_in?
-      erb :'users/create_user', locals: {message: "Please sign up before you sign in"}
+      erb :'users/create_user'
     else
       @user = User.find_by(:id => session[:user_id])
       redirect to "/users/#{@user.slug}"
@@ -19,13 +19,18 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if logged_in?
-      @user = User.find_by(:id => session[:user_id])
-      redirect to "/users/#{@user.slug}"
-    else
+    varification = []
+      User.all.each do |user|
+        if user.email == params[:email]
+          varification << user
+        end
+      end
+    if varification.empty?
       @user = User.create(params)
       session[:user_id] = @user.id
       redirect to "/users/#{@user.slug}"
+    else
+      redirect to '/signup-error'
     end
   end
 
@@ -39,6 +44,7 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
+      binding.pry
     if logged_in?
       @user = User.find_by(:username => params[:username])
       if @user && @user.authenticate(params[:password])

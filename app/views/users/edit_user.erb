@@ -1,8 +1,28 @@
-<h1>Edit User</h1>
+<div class="row justify-content-md-center ">
+  <div class="col-sm-8 red">
+    <div class="jumbotron">
+      <h1 class="display-4">Update User</h1>
+      <form action="/users/<%=@user.slug%>" method="POST">
+        <input type="hidden" name="_method" value="PATCH">
 
-<form action="/users/<%=@user.slug%>" method="POST">
-<input type="hidden" name="_method" value="PATCH">
-  <p>Name: <input type="text" name="name" value="<%@user.name%>"></p>
-  <p>Password: <input type="text" name="password" value="<%@user.password%>"></p>
-  <input class="btn btn-primary" type="submit" Value="Update">
-</form>
+        <div class="form-group">
+          <label class="col-md-8 control-label" for="3">Username</label>
+          <div class="col-md-12">
+          <input name="username" type="text" class="form-control input-md" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-8 control-label" for="3">Password</label>
+          <div class="col-md-12">
+          <input name="password" type="text" class="form-control input-md" required>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <button class="btn btn-info btn-block login" type="submit">Update Details</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
