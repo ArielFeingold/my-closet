@@ -44,18 +44,21 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-      binding.pry
-    if logged_in?
-      @user = User.find_by(:username => params[:username])
-      if @user && @user.authenticate(params[:password])
-        session[:user_id] = @user.id
-        redirect to "/users/#{@user.slug}"
-      else
-        redirect to "/signup"
-      end
+    @user = User.find_by(:username => params[:username])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect to "/users/#{@user.slug}"
     else
-      redirect to '/login'
+      redirect to "/login-error"
     end
+  end
+
+  get '/login-error' do
+    erb:'users/login-error'
+  end
+
+  get '/signup-error' do
+    erb:'users/signup-error'
   end
 
   get '/logout' do
