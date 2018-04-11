@@ -62,11 +62,11 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    if logged_in?
+    if self.logged_in?
       session.destroy
       redirect to '/'
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 
@@ -75,7 +75,7 @@ class UsersController < ApplicationController
       @user = User.find_by_slug(params[:slug])
       erb :'users/show'
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 
@@ -84,7 +84,7 @@ class UsersController < ApplicationController
       @user = User.find_by_slug(params[:slug])
       erb :'users/edit_user'
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 
@@ -100,7 +100,7 @@ class UsersController < ApplicationController
       @user.save
       redirect to "/users/#{@user.slug}"
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 
