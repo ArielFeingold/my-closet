@@ -1,11 +1,12 @@
-
-<h2>Welcome <%=@user.name%></h2>
-
-<h3>What would you like to do today?</h3>
-
-<ul>
-  <li><a href="/outfits">Go To My Outfits</a></li>
-  <li><a href="/items">Go To My Items</a></li>
-</ul>
-
-<a href="/users/<%=@user.slug%>/edit">Edit Profile</a>
+<div class="row justify-content-md-center ">
+  <div class="col-sm-8 red">
+    <div class="jumbotron">
+      <h5>Welcome</h5>
+      <h2 class="display-4"><%=@user.name.capitalize%></h2>
+      <p class="lead">What would you like to do today?</p>
+      <a href="/outfits" class="btn btn-info btn-lg btn-block top-buffer-small">Go To My Outfits</a>
+      <a href="/items" class="btn btn-primary btn-lg btn-block top-buffer-small">Go To My Items</a>
+      <a href="/users/<%=@user.slug%>/edit" class="btn btn-secondary btn-lg btn-block top-buffer-small">Edit Profile</a>
+    </div>
+  </div>
+</div>
