@@ -43,6 +43,7 @@ end
     if logged_in?
       @user = User.find_by(:id => session[:user_id])
       @outfit = Outfit.find_by_slug(params[:slug])
+      # binding.pry
       erb :'outfits/edit_outfit'
     else
       redirect to '/'
