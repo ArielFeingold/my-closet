@@ -6,7 +6,7 @@ class OutfitsController < ApplicationController
       @outfits = @user.outfits
       erb :'outfits/outfits'
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 
@@ -15,7 +15,7 @@ class OutfitsController < ApplicationController
       @user = User.find_by(:id => session[:user_id])
       erb :'outfits/create_outfit'
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 
@@ -26,7 +26,7 @@ class OutfitsController < ApplicationController
     @outfit.save
     redirect to '/outfits'
   else
-    redirect to '/login'
+    redirect to '/'
   end
 end
 
@@ -35,7 +35,7 @@ end
       @outfit = Outfit.find_by_slug(params[:slug])
       erb :'/outfits/show'
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 
@@ -45,7 +45,7 @@ end
       @outfit = Outfit.find_by_slug(params[:slug])
       erb :'outfits/edit_outfit'
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 

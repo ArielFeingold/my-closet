@@ -1,6 +1,22 @@
+a{
+  color: #0e8a8e;
+  text-decoration: none; /* no underline */
+}
+
+
+a:hover {
+    color: #64686d;
+    text-decoration: none;
+    color: white;
+}
+
 body{
   background: #eee url(/images/intersection.png);
 }
+
+/* a.link-button{
+  color: white;
+} */
 .row{
   margin-top: 2em;
 }

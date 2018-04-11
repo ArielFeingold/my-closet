@@ -5,7 +5,7 @@
 <% else %>
   <%@outfits.each do |outfit|%>
   <ul>
-    <li><a href="/outfits/<%=outfit.slug%>"><%=outfit.name%></a></li>
+    <li class="list-group-item"><a href="/outfits/<%=outfit.slug%>"><%=outfit.name.capitalize%></a></li>
   </ul>
   <%end%>
  <% end %>
