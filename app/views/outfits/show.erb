@@ -1,4 +1,27 @@
-<h1><%=@outfit.name%></h1>
+<div class="row justify-content-md-center ">
+  <div class="col-sm-8 ">
+    <div class="jumbotron">
+      <h3 class="display-4"><%=@outfit.name.capitalize%></h3>
+      <h6 class="top-buffer-xs">Outfit Items:</h6>
+      <p class="top-buffer-xs"></p>
+      <% @outfit.items.each do |item| %>
+        <ul class="list-group">
+        <li class="list-group-item"><a href="/items/<%=item.slug%>"><%=item.name%></a></li>
+      </ul>
+      <%end%>
+      <a class="link-button btn btn-info btn-block link-button top-buffer-xs" href="/outfits/<%=@outfit.slug%>/edit">Update Outfit</a>
+      <div>
+        <form class="top-buffer-xs" method="post" action="/outfits/<%=@outfit.slug%>/delete">
+        <input  id="hidden" type="hidden" name="_method" value="DELETE">
+        <input type="submit" class="btn btn-outline-info btn-block" value="Delete Outfit"></input>
+        </form>    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <h1><%=@outfit.name%></h1>
 
 <% @outfit.items.each do |item| %>
   <ul>
@@ -12,3 +35,24 @@
 <input id="hidden" type="hidden" name="_method" value="DELETE">
 <input type="submit" value="Delete outfit">
 </form>
+
+
+<div class="row justify-content-md-center ">
+  <div class="col-sm-8 ">
+    <div class="jumbotron">
+      <h1 class="display-4"><%=@outfit.name%></h1>
+      <% @outfit.items.each do |item| %>
+        <ul>
+        <li><a href="/items/<%=item.slug%>"><%=item.name%></a></li>
+      </ul>
+      <%end%>
+
+      <a href="/outfits/<%=@outfit.slug%>/edit">Edit Outfit</a>
+
+      <form method="post" action="/outfits/<%=@outfit.slug%>/delete">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete outfit">
+      </form>
+    </div>
+  </div>
+</div> -->

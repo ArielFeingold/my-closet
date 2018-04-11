@@ -1,4 +1,45 @@
-<h1>Edit Outfit</h1>
+<div class="row justify-content-md-center ">
+  <div class="col-sm-8 ">
+    <div class="jumbotron">
+      <h2 class="display-4">Update Outfit</h2>
+        <div class="form-group">
+          <form action="/outfits/<%=@outfit.slug%>" method="POST">
+          <input type="hidden" name="_method" value="PATCH">
+
+            <lable>Change Outfit's Name</label>
+              <input class="top-buffer-xs" type="text" name="outfit[name]" value ="<%=@outfit.name%>"><br></br>
+
+            <lable><h4>Remove Items</h4></label>
+
+              <div class="form-check">
+                <% @outfit.items.each do |item| %>
+                  <input class="top-buffer-xs form-check-input" type="checkbox" name="outfit[delete_items][]" value="<%= item.id %>">
+                  <label class="top-buffer-xs form-check-label" for="defaultCheck1"><%= item.name.capitalize %><br>
+                <% end %>
+          <div class="top-buffer-xs">
+
+            <label><h4>Add Items</h4></label> <a class="add-item" href="/items/new">Add New item</a> <br>
+
+            <div class="form-check">
+              <% @add_items.each do |item| %>
+                <input class="top-buffer-xs form-check-input" type="checkbox" name="outfit[add_items][]" value="<%= item.id %>">
+                <label class="top-buffer-xs form-check-label" for="defaultCheck1"><%= item.name.capitalize %><br>
+              <% end %>
+            </div>
+
+          </div>
+            <input class="btn btn-info btn-block link-button top-buffer-xs" type="submit" value="Update Outfit">
+          </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- <h1>Edit Outfit</h1>
 
 <form action="/outfits/<%=@outfit.slug%>" method="POST">
 <input type="hidden" name="_method" value="PATCH">
@@ -20,4 +61,4 @@
     <% end %>
 
   <input type="submit" value="Edit Outfit">
-</form>
+</form> -->

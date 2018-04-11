@@ -1,12 +1,20 @@
-<h1>Your Outfits</h1>
 
-<%if @outfits.size == 0%>
-  <h3>No Outfits to show. Click below to create your first outfit</h3>
-<% else %>
-  <%@outfits.each do |outfit|%>
-  <ul>
-    <li class="list-group-item"><a href="/outfits/<%=outfit.slug%>"><%=outfit.name.capitalize%></a></li>
-  </ul>
-  <%end%>
- <% end %>
-<a href="/outfits/new">Create New Outfit</a>
+<div class="row justify-content-md-center ">
+  <div class="col-sm-8 ">
+    <div class="jumbotron">
+      <h1 class="display-4">MyOutfits</h1>
+      <%if @outfits.size == 0%>
+        <p>You have no outfits to show, click below to create your first outfit</p>
+      <% else %>
+        <p>Choose an Outfit:</p>
+        <%@outfits.each do |outfit|%>
+        <ul class="list-group">
+          <li class="list-group-item"><a href="/outfits/<%=outfit.slug%>"><%=outfit.name.capitalize%></a></li>
+        </ul>
+        <%end%>
+       <% end %>
+       <p class="top-buffer-xs"></p>
+       <p class="btn btn-info btn-block link-button"> <a class="link-button" href="/outfits/new">Create New Outfit</a></p>
+    </div>
+  </div>
+</div>
