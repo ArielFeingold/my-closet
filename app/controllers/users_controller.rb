@@ -95,4 +95,8 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/test' do
+    erb :test
+  end
+
 end
