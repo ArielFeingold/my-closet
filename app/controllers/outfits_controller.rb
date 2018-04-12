@@ -43,9 +43,10 @@ end
     if logged_in?
       @user = User.find_by(:id => session[:user_id])
       @outfit = Outfit.find_by_slug(params[:slug])
+      @add_items = @user.items - @outfit.items
       flash[:create_item] = "You need at least one item to update your cart"
       flash[:add_items] = "No items to show. Please add items to edit outfit"
-      if @outfit.item_ids.empty? && @user.items.all.empty? || @outfit.item_ids.empty? && !@user.items.all.empty?
+      if @outfit.item_ids.empty? && @user.items.all.empty?
         session[:item_ids] = @outfit.item_ids
         redirect to '/items/new'
       end
