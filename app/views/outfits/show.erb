@@ -5,15 +5,15 @@
       <h6>Outfit Items:</h6>
       <% @outfit.items.each do |item| %>
         <ul class="list-group">
-        <li class="list-group-item"><a href="/items/<%=item.slug%>"><%=item.name%></a></li>
+        <li class="list-group-item" id="outfit-items"><a href="/items/<%=item.slug%>"><%=item.name%></a></li>
       </ul>
       <%end%>
-      <p><a class="link-button btn btn-info btn-block link-button" href="/outfits/<%=@outfit.slug%>/edit">Update Outfit</a></p>
-        <p><a class="link-button btn btn-info btn-block link-button" href="/outfits/<%=@outfit.slug%>/edit">Add Items</a></p>
+      <p class="top-buffer-md"><a class="link-button btn btn-info btn-block link-button" href="/outfits/<%=@outfit.slug%>/edit">Update Outfit</a></p>
+
       <div>
       <p><form method="post" action="/outfits/<%=@outfit.slug%>/delete">
       <input  id="hidden" type="hidden" name="_method" value="DELETE">
-        <input type="submit" class="btn btn-outline-info btn-block" value="Delete Outfit"></input>
+        <input type="submit" class="btn btn-outline-danger btn-block" value="Delete Outfit"></input>
         </form></p>
     </div>
   </div>

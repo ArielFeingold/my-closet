@@ -20,12 +20,14 @@
         </tbody>
       </table>
 
-      <p class="btn btn-info btn-block "><a class="link-button" href="/items/<%=@item.slug%>/edit">Update Item</a></p>
-      <p class="btn btn-info btn-block link-button"> <a class="link-button" href="/items/new">Create New Item</a></p>
+      <p><a class="link-button btn btn-info btn-block link-button" href="/items/<%=@item.slug%>/edit">Update Item</a></p>
+      <p><a class="link-button btn btn-info btn-block link-button" href="/items/new">Create New Item</a></p>
+
+
 
       <form method="post" action="/items/<%=@item.slug%>/delete">
         <input id="hidden" type="hidden" name="_method" value="DELETE">
-        <input type="submit" class="btn btn-outline-info btn-block" value="Delete Item">
+        <input type="submit" class="btn btn-outline-danger btn-block" value="Delete Item">
       </form>
     </div>
   </div>

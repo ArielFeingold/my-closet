@@ -1,18 +1,15 @@
-a{
-  color: #0e8a8e;
-  text-decoration: none; /* no underline */
+
+#edit-add{
+    font-size: 0.7em;
 }
 
-
-a:hover {
-    color: #fff;
-    text-decoration: none;
+#outfit-items{
+  margin-top:3px;
 }
 
-body{
-  background: #eee url(/images/intersection.png);
+.input-group-text{
+  color: red;
 }
-
 .row{
   margin-top: 2em;
 }
@@ -31,4 +28,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 
 .top-buffer-xs {
   margin-top:10px;
+}
+
+.top-buffer-md {
+  margin-top:20px;
+}
+
+a{
+  color: #0e8a8e;
+  text-decoration: none; /* no underline */
+}
+
+
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+body{
+  background: #eee url(/images/intersection.png);
 }
