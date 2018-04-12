@@ -3,7 +3,9 @@
     <div class="jumbotron">
       <h1 class="display-4">MyOutfits</h1>
       <%if @outfits.size == 0%>
-        <p>You have no outfits to show, click below to create your first outfit</p>
+        <div class="alert alert-warning" role="alert">
+          You have no outfits to show, click below to create your first outfit
+        </div>
       <% else %>
         <p>Choose an Outfit:</p>
         <%@outfits.each do |outfit|%>

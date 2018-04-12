@@ -1,6 +1,11 @@
 <div class="row justify-content-md-center ">
   <div class="col-sm-8 ">
     <div class="jumbotron">
+      <%if @user.items.empty?%>
+      <div class="alert alert-warning" role="alert"><%=flash[:create_item]%>
+        </div>
+      <% end %>
+
       <h3 class="display-4">Create Item</h3>
         <form action="/items" method="POST">
           <div class="form-group">

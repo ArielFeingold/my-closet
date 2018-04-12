@@ -21,7 +21,6 @@ class OutfitsController < ApplicationController
 
   post '/outfits' do
   if logged_in?
-    @outfit = Outfit.new(params[:outfit])
     @outfit.user_id = session[:user_id]
     @outfit.save
     redirect to '/outfits'
@@ -44,7 +43,7 @@ end
       @user = User.find_by(:id => session[:user_id])
       @outfit = Outfit.find_by_slug(params[:slug])
       @add_items = @user.items - @outfit.items
-      flash[:create_item] = "You need at least one item to update your cart"
+      flash[:create_item] = "You need at least one item to update your outfit"
       flash[:add_items] = "No items to show. Please add items to edit outfit"
       if @outfit.item_ids.empty? && @user.items.all.empty?
         session[:item_ids] = @outfit.item_ids

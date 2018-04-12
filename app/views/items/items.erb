@@ -3,7 +3,9 @@
     <div class="jumbotron">
       <h2 class="display-4">Your Items</h2>
       <%if @items.size == 0%>
-        <p>No Outfits to show. Click <a href="/items/new">HERE</a> to create your first item</p>
+          <div class="alert alert-warning" role="alert">
+            No items to show. Click below to add your first item.
+          </div>
       <% else %>
       <%@categories.each do |c|%>
           <h3 class="top-buffer-xs"><%=c.capitalize%></h3>
@@ -17,6 +19,7 @@
         <% end %>
       <% end %>
             <p><a class="link-button btn btn-info btn-block link-button top-buffer-md" href="/items/new">Create a New Item</a></p>
+            <p><a class="link-button btn btn-secondary btn-block link-button top-buffer-md" href="/outfits/new">Create a New Outfit</a></p>
     </div>
   </div>
 </div>

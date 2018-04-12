@@ -2,13 +2,21 @@
   <div class="col-sm-8 ">
     <div class="jumbotron">
       <h3 class="display-4"><%=@outfit.name.capitalize%></h3>
-      <h6>Outfit Items:</h6>
+
+      <%if @outfit.items.empty?%>
+        <div class="alert alert-warning" role="alert">
+          This outfit has no items.
+        </div>
+      <% else %>
+          <h6>Outfit Items:</h6>
+        <% end %>
+
       <% @outfit.items.each do |item| %>
         <ul class="list-group">
         <li class="list-group-item" id="outfit-items"><a href="/items/<%=item.slug%>" target="_blank"><%=item.name%></a></li>
       </ul>
       <%end%>
-      <p class="top-buffer-md"><a class="link-button btn btn-info btn-block link-button" href="/outfits/<%=@outfit.slug%>/edit" target="_blank">Update Outfit</a></p>
+      <p class="top-buffer-md"><a class="link-button btn btn-info btn-block link-button" href="/outfits/<%=@outfit.slug%>/edit">Update Outfit</a></p>
 
       <div>
       <p><form method="post" action="/outfits/<%=@outfit.slug%>/delete">
