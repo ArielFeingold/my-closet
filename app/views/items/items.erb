@@ -8,11 +8,11 @@
           </div>
       <% else %>
       <%@categories.each do |c|%>
-          <h3 class="top-buffer-xs"><%=c.capitalize%></h3>
+          <h3 class="top-buffer-md"><%=c.capitalize%></h3>
           <%items = @items.find_all{|item| item.category == c}%>
           <%items.each do |i|%>
             <ul class="list-group">
-              <li class="list-group-item"><a href="/items/<%=i.slug%>"><%=i.name.capitalize%></a></li>
+              <li class="list-group-item"><a href="/items/<%=i.id%>/<%=i.slug%>"><%=i.name.capitalize%></a></li>
             </ul>
 
           <% end %>

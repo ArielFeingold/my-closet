@@ -10,7 +10,7 @@
         <p>Choose an Outfit:</p>
         <%@outfits.each do |outfit|%>
         <ul class="list-group">
-          <li class="list-group-item"><a href="/outfits/<%=outfit.slug%>"><%=outfit.name.capitalize%></a></li>
+          <li class="list-group-item"><a href="/outfits/<%=outfit.id%>/<%=outfit.slug%>"><%=outfit.name.capitalize%></a></li>
         </ul>
         <%end%>
        <% end %>

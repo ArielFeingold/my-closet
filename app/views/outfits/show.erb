@@ -13,55 +13,16 @@
 
       <% @outfit.items.each do |item| %>
         <ul class="list-group">
-        <li class="list-group-item" id="outfit-items"><a href="/items/<%=item.slug%>" target="_blank"><%=item.name%></a></li>
+        <li class="list-group-item" id="outfit-items"><a href="/items/<%=item.id%>/<%=item.slug%>" target="_blank"><%=item.name%></a></li>
       </ul>
       <%end%>
-      <p class="top-buffer-md"><a class="link-button btn btn-info btn-block link-button" href="/outfits/<%=@outfit.slug%>/edit">Update Outfit</a></p>
+      <p class="top-buffer-md"><a class="link-button btn btn-info btn-block link-button" href="/outfits/<%=@outfit.id%>/<%=@outfit.slug%>/edit">Update Outfit</a></p>
 
       <div>
-      <p><form method="post" action="/outfits/<%=@outfit.slug%>/delete">
+      <p><form method="post" action="/outfits/<%=@outfit.id%>/<%=@outfit.slug%>/delete">
       <input  id="hidden" type="hidden" name="_method" value="DELETE">
         <input type="submit" class="btn btn-outline-danger btn-block" value="Delete Outfit"></input>
         </form></p>
     </div>
   </div>
 </div>
-
-
-
-
-<!-- <h1><%=@outfit.name%></h1>
-
-<% @outfit.items.each do |item| %>
-  <ul>
-  <li><a href="/items/<%=item.slug%>"><%=item.name%></a></li>
-</ul>
-<%end%>
-
-<a href="/outfits/<%=@outfit.slug%>/edit">Edit Outfit</a>
-
-<form method="post" action="/outfits/<%=@outfit.slug%>/delete">
-<input id="hidden" type="hidden" name="_method" value="DELETE">
-<input type="submit" value="Delete outfit">
-</form>
-
-
-<div class="row justify-content-md-center ">
-  <div class="col-sm-8 ">
-    <div class="jumbotron">
-      <h1 class="display-4"><%=@outfit.name%></h1>
-      <% @outfit.items.each do |item| %>
-        <ul>
-        <li><a href="/items/<%=item.slug%>"><%=item.name%></a></li>
-      </ul>
-      <%end%>
-
-      <a href="/outfits/<%=@outfit.slug%>/edit">Edit Outfit</a>
-
-      <form method="post" action="/outfits/<%=@outfit.slug%>/delete">
-      <input id="hidden" type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete outfit">
-      </form>
-    </div>
-  </div>
-</div> -->

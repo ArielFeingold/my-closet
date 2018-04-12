@@ -21,6 +21,7 @@ class OutfitsController < ApplicationController
 
   post '/outfits' do
   if logged_in?
+    @outfit = Outfit.new(params[:outfit])
     @outfit.user_id = session[:user_id]
     @outfit.save
     redirect to '/outfits'
@@ -29,16 +30,16 @@ class OutfitsController < ApplicationController
   end
 end
 
-  get '/outfits/:slug' do
+  get '/outfits/:id/:slug' do
     if logged_in?
-      @outfit = Outfit.find_by_slug(params[:slug])
+      @outfit = Outfit.find_by(params[:id])
       erb :'/outfits/show'
     else
       redirect to '/'
     end
   end
 
-  get '/outfits/:slug/edit' do
+  get '/outfits/:id/:slug/edit' do
     if logged_in?
       @user = User.find_by(:id => session[:user_id])
       @outfit = Outfit.find_by_slug(params[:slug])
@@ -53,7 +54,7 @@ end
     end
   end
 
-  patch '/outfits/:slug' do
+  patch '/outfits/:id/:slug' do
     if logged_in?
       @user_outfits = Outfit.all.find_all{|outfit| outfit.user_id == session[:user_id]}
       @outfit = @user_outfits.find{|outfit| outfit.slug == params[:slug]}
@@ -78,16 +79,17 @@ end
             end
           end
         end
-        redirect to "/outfits/#{@outfit.slug}"
+        redirect to "/outfits/#{@outfit.id}/#{@outfit.slug}"
       else
-        redirect to "/outfits/#{@outfit.slug}/edit"
+        redirect to "/outfits/#{@outfit.id}/#{@outfit.slug}/edit"
       end
     redirect to '/'
     end
   end
 
-  delete '/outfits/:slug/delete' do
+  delete '/outfits/:id/:slug/delete' do
     if logged_in?
+      binding.pry
       @outfit = Outfit.find_by_slug(params[:slug])
       if @outfit && @outfit.user == current_user
         @outfit.delete

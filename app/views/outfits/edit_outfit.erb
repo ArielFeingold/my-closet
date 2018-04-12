@@ -3,7 +3,7 @@
       <div class="jumbotron">
         <h2 class="display-4">Update Outfit</h2>
           <div class="form-group">
-            <form action="/outfits/<%=@outfit.slug%>" method="POST">
+            <form action="/outfits/<%=@outfit.id%>/<%=@outfit.slug%>" method="POST">
             <input type="hidden" name="_method" value="PATCH">
 
                 <lable>Change Outfit's Name</label>

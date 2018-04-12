@@ -35,16 +35,16 @@ class ItemsController < ApplicationController
     end
   end
 
-  get '/items/:slug' do
+  get '/items/:id/:slug' do
     if logged_in?
-      @item = Item.find_by_slug(params[:slug])
+      @item = Item.find_by(params[:id])
       erb :'items/show'
     else
       redirect to '/'
     end
   end
 
-  get '/items/:slug/edit' do
+  get '/items/:id/:slug/edit' do
     if logged_in?
       @item = Item.find_by_slug(params[:slug])
       erb :'items/edit_item'
@@ -55,6 +55,7 @@ class ItemsController < ApplicationController
 
   patch '/items/:slug' do
     if logged_in?
+      binding.pry
       @user_items = Item.all.find_all{|item| item.user_id == session[:user_id]}
       @item = @user_items.find{|item| item.slug == params[:slug]}
       if @item && @item.user == current_user
@@ -67,7 +68,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  delete '/items/:slug/delete' do
+  delete '/items/:id/:slug/delete' do
     if logged_in?
       @item = Item.find_by_slug(params[:slug])
       if @item && @item.user == current_user

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   get '/' do
     if logged_in?
       @user = User.find_by(:id => session[:user_id])
-      redirect to "/users/#{@user.slug}"
+      redirect to "/users/#{@user.id}/#{@user.slug}"
     else
       erb :index
     end
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       erb :'users/create_user'
     else
       @user = User.find_by(:id => session[:user_id])
-      redirect to "/users/#{@user.slug}"
+      redirect to "/users/#{@user.id}/#{@user.slug}"
     end
   end
 
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     if varification.empty?
       @user = User.create(params)
       session[:user_id] = @user.id
-      redirect to "/users/#{@user.slug}"
+      redirect to "/users/#{@user.id}/#{@user.slug}"
     else
       redirect to '/signup-error'
     end
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   get '/login' do
     if logged_in?
       @user = User.find_by(:id => session[:user_id])
-      redirect to "/users/#{@user.slug}"
+      redirect to "/users/#{@user.id}/#{@user.slug}"
     else
       erb :'users/login'
     end
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     @user = User.find_by(:username => params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect to "/users/#{@user.slug}"
+      redirect to "/users/#{@user.id}/#{@user.slug}"
     else
       redirect to "/login-error"
     end
@@ -70,9 +70,9 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/users/:slug' do
+  get '/users/:id/:slug' do
     if logged_in?
-      @user = User.find_by_slug(params[:slug])
+      @user = User.find_by(session[:id])
       erb :'users/show'
     else
       redirect to '/'
@@ -81,7 +81,7 @@ class UsersController < ApplicationController
 
   get '/users/:slug/edit' do
     if logged_in?
-      @user = User.find_by_slug(params[:slug])
+      @user = User.find_by(session[:id])
       erb :'users/edit_user'
     else
       redirect to '/'
@@ -90,7 +90,7 @@ class UsersController < ApplicationController
 
   patch '/users/:slug' do
     if logged_in?
-      @user = User.find_by_slug(params[:slug])
+      @user = User.find_by(session[:id])
       if params[:name] != ""
         @user.name = params[:name]
       end
