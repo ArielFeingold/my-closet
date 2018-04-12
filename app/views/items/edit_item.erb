@@ -1,24 +1,33 @@
-<h1>Edit <%=@item.name%></h1>
+<div class="row justify-content-md-center ">
+  <div class="col-sm-8 ">
+    <div class="jumbotron">
+      <h1 class="display-4">Hello, world!</h1>
+      <h2 class="display-4"><%=@item.name%></h2>
+      <div class="">
+        <form action="/items/<%=@item.slug%>" method="POST">
+            <input type="hidden" name="_method" value="PATCH">
+            <label>Name</label><br>
+            <input type="text" name="name" value="<%=@item.name%>"/><br>
+            <label>Category</label><br>
+            <select name="category">
+            <option value="shirts">Shirt</option>
+            <option value="coat">Coat</option>
+            <option value="jacket">Jacket</option>
+            <option value="pants">Pants</option>
+            <option value="dress">Dress</option>
+            <option value="skirt">Skirt</option>
+            <option value="shoes">Shoes</option>
+            <option value="accessories">Accessories</option>
+          </select><br>
+            <label>Type</label><br>
+            <input type="text" name="item_type" value="<%=@item.item_type%>"/><br>
+            <label>Color</label><br>
+            <input type="text" name="color" value="<%=@item.color%>"/><br>
+            <br>
+            <input class="btn btn-info btn-block" type="submit" value="Update Item">
 
-<form action="/items/<%=@item.slug%>" method="POST">
-    <input type="hidden" name="_method" value="PATCH">
-    <label>Name</label><br>
-    <input type="text" name="name" value="<%=@item.name%>"/><br>
-    <label>Category</label><br>
-    <select name="category">
-    <option value="shirts">Shirt</option>
-    <option value="coat">Coat</option>
-    <option value="jacket">Jacket</option>
-    <option value="pants">Pants</option>
-    <option value="dress">Dress</option>
-    <option value="skirt">Skirt</option>
-    <option value="shoes">Shoes</option>
-    <option value="accessories">Accessories</option>
-  </select><br>
-    <label>Type</label><br>
-    <input type="text" name="item_type" value="<%=@item.item_type%>"/><br>
-    <label>Color</label><br>
-    <input type="text" name="color" value="<%=@item.color%>"/><br>
 
-    <input type="submit" value="Update Item">
-</form>
+        </form>
+    </div>
+  </div>
+</div>
