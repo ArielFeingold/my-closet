@@ -9,12 +9,14 @@
         <li class="list-group-item"><a href="/items/<%=item.slug%>"><%=item.name%></a></li>
       </ul>
       <%end%>
-      <a class="link-button btn btn-info btn-block link-button top-buffer-xs" href="/outfits/<%=@outfit.slug%>/edit">Update Outfit</a>
+      <p><a class="link-button btn btn-info btn-block link-button top-buffer-xs" href="/outfits/<%=@outfit.slug%>/edit">Update Outfit</a></p>
+        <p><a class="link-button btn btn-info btn-block link-button top-buffer-xs" href="/outfits/<%=@outfit.slug%>/edit">Add Items</a></p> 
       <div>
-        <form class="top-buffer-xs" method="post" action="/outfits/<%=@outfit.slug%>/delete">
-        <input  id="hidden" type="hidden" name="_method" value="DELETE">
+      <p><form class="top-buffer-xs" method="post" action="/outfits/<%=@outfit.slug%>/delete">
+      <input  id="hidden" type="hidden" name="_method" value="DELETE">
         <input type="submit" class="btn btn-outline-info btn-block" value="Delete Outfit"></input>
-        </form>    </div>
+        </form></p>
+    </div>
   </div>
 </div>
 

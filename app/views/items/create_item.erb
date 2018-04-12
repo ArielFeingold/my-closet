@@ -1,5 +1,11 @@
 <h1>Create Item</h1>
 
+  <%if session[:item_ids].empty? && @user.items.all.empty?%>
+    <%=flash[:create_item]%>
+  <%elsif session[:item_ids].empty? && !@user.items.all.empty?%>
+    <%flash[:add_items]%>
+  <% end %>
+
 <form action="/items" method="POST">
   <label>Name</label><br>
   <input type="text" name="name"/required><br>

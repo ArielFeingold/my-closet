@@ -1,13 +1,5 @@
-<%if @outfit.items.size == 0%>
-  <div class="row justify-content-md-center ">
-    <div class="col-sm-8 ">
-      <div class="jumbotron">
-        <h1 class="display-4">No Items </h1>
-        <p class="btn btn-info btn-block "> <a class="link-button" href="/items/create_item">Add Item to Outfit</a></p>
-      </div>
-    </div>
-  </div>
-<%else%>
+
+
     <div class="row justify-content-md-center ">
       <div class="col-sm-8 ">
         <div class="jumbotron">
@@ -19,6 +11,9 @@
                 <lable>Change Outfit's Name</label>
                   <input class="top-buffer-xs" type="text" name="outfit[name]" value ="<%=@outfit.name%>"><br></br>
 
+              <%if !@outfit.items.empty?%>
+                
+              <%else%>
                 <lable><h4>Remove Items</h4></label>
 
                   <div class="form-check">
@@ -26,7 +21,7 @@
                       <input class="top-buffer-xs form-check-input" type="checkbox" name="outfit[delete_items][]" value="<%= item.id %>">
                       <label class="top-buffer-xs form-check-label" for="defaultCheck1"><%= item.name.capitalize %><br>
                     <% end %>
-              <div class="top-buffer-xs">
+                  <% end %>
 
                 <label><h4>Add Items</h4></label> <a class="add-item" href="/items/new">Add New item</a> <br>
 
@@ -35,7 +30,6 @@
                     <input class="top-buffer-xs form-check-input" type="checkbox" name="outfit[add_items][]" value="<%= item.id %>">
                     <label class="top-buffer-xs form-check-label" for="defaultCheck1"><%= item.name.capitalize %><br>
                   <% end %>
-                </div>
 
               </div>
                 <input class="btn btn-info btn-block link-button top-buffer-xs" type="submit" value="Update Outfit">
@@ -44,7 +38,6 @@
         </div>
       </div>
     </div>
-  <% end %>
 
 
 
