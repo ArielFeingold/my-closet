@@ -108,4 +108,14 @@ class UsersController < ApplicationController
     erb :test
   end
 
+  delete '/delete' do
+    if logged_in?
+      @user = User.find_by_slug(params[:slug])
+      @user.delete
+      redirect to '/outfits'
+    else
+      redirect to '/'
+    end
+  end
+
 end

@@ -1,7 +1,7 @@
 <div class="row justify-content-md-center ">
   <div class="col-sm-8 red">
     <div class="jumbotron">
-      <h1 class="display-4">Update User</h1>
+      <h1 class="display-4">Update <%=@user.name.capitalize%></h1>
       <form action="/users/<%=@user.slug%>" method="POST">
         <input type="hidden" name="_method" value="PATCH">
 
@@ -23,6 +23,12 @@
           <button class="btn btn-info btn-block login" type="submit">Update Details</button>
         </div>
       </form>
+      <div>
+      <p><form method="post" action="/delete">
+      <input  id="hidden" type="hidden" name="_method" value="DELETE">
+        <input type="submit" class="btn btn-danger btn-block" value="Delete Account"></input>
+        </form></p>
+    </div>
     </div>
   </div>
 </div>
