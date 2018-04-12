@@ -4,7 +4,7 @@
       <h3 class="display-4">Create Outfit</h3>
       <form class="form-group" action="/outfits" method="POST">
           <input class="top-fuffer-xs" type="text" name="outfit[name]" placeholder="Outfit's Name"/required><br></br>
-          <label><h4>Choose Items</h4></label> <a class="add-item" href="/items/new">Add New item</a> <br>
+          <label><h4>Choose Items</h4></label> <a class="edit-add" href="/items/new">Add New item</a> <br>
         <div class="form-check">
           <% @user.items.each do |item| %>
             <input class="form-check-input" type="checkbox" name="outfit[item_ids][]" value="<%= item.id %>">

@@ -5,7 +5,7 @@
         <form action="/items" method="POST">
           <div class="form-group">
               <label for="name">Name</label> <br>
-              <input type="text" name="name"/>
+              <input type="text" name="name" required/>
           </div>
 
           <div class="form-group">
@@ -26,12 +26,12 @@
 
           <div class="form-group">
               <label for="category">Type</label> <br>
-              <input type="text" name="item_type"/>
+              <input type="text" name="item_type" required/>
           </div>
 
           <div class="form-group">
               <label for="color">color</label> <br>
-              <input type="text" name="color"/>
+              <input type="text" name="color" required/>
           </div>
 
           <input class="btn btn-info btn-block" type="submit" value="Create Item">

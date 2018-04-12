@@ -30,7 +30,7 @@
                   <% end %>
                 </div>
 
-                <label class="top-buffer-md"><h4>Add Items</h4></label> <a id="edit-add" href="/items/new">Add New item</a> <br>
+                <label class="top-buffer-md"><h4>Add Items</h4></label> <a class="edit-add" href="/items/new">Add New item</a> <br>
                 <div class="form-check">
                   <% @add_items.each do |item| %>
                     <input class="form-check-input" type="checkbox" name="outfit[add_items][]" value="<%= item.id %>">
