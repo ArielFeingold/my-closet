@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
       end
       erb :'items/items'
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 
@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
     if logged_in?
       erb :'/items/create_item'
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 
@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
       @item.save
       redirect to "/items"
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 
@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
       @item = Item.find_by_slug(params[:slug])
       erb :'items/show'
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 
@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
       @item = Item.find_by_slug(params[:slug])
       erb :'items/edit_item'
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 
@@ -63,7 +63,7 @@ class ItemsController < ApplicationController
       else
         redirect to "/items/#{@item.slug}/edit"
       end
-    redirect to '/login'
+    redirect to '/'
     end
   end
 
@@ -75,7 +75,7 @@ class ItemsController < ApplicationController
       end
       redirect to '/items'
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 

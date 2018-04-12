@@ -83,7 +83,7 @@ end
       else
         redirect to "/outfits/#{@outfit.slug}/edit"
       end
-    redirect to '/login'
+    redirect to '/'
     end
   end
 
@@ -95,7 +95,7 @@ end
       end
       redirect to '/outfits'
     else
-      redirect to '/login'
+      redirect to '/'
     end
   end
 
