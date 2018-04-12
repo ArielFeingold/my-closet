@@ -1,14 +1,32 @@
-<h1><%=@item.name%></h1>
 
-Category: <%=@item.category%> <br>
-Type: <%=@item.item_type%> <br>
-Color: <%=@item.color%><br>
+<div class="row justify-content-md-center ">
+  <div class="col-sm-8 ">
+    <div class="jumbotron">
+      <h2 class="display-4"><%=@item.name.capitalize%></h2>
+      <table class="table table-responsive w-auto">
+        <tbody>
+          <tr>
+            <th scope="row">Category</th>
+            <td><%=@item.category.capitalize%></td>
+          </tr>
+          <tr>
+            <th scope="row">Type</th>
+            <td><%=@item.item_type.capitalize%></td>
+          </tr>
+          <tr>
+            <th scope="row">Color</th>
+            <td><%=@item.color.capitalize%></td>
+          </tr>
+        </tbody>
+      </table>
 
-<a href="/items/<%=@item.slug%>/edit">Edit Item</a><br>
-<a href="/outfits">Go To My Outfits</a><br>
-<a href="/items/new">Add an Item</a>
+      <p class="btn btn-info btn-block "><a class="link-button" href="/items/<%=@item.slug%>/edit">Update Item</a></p>
+      <p class="btn btn-info btn-block link-button"> <a class="link-button" href="/items/new">Create New Item</a></p>
 
-<form method="post" action="/items/<%=@item.slug%>/delete">
-<input id="hidden" type="hidden" name="_method" value="DELETE">
-<input type="submit" value="Delete Item">
-</form>
+      <form method="post" action="/items/<%=@item.slug%>/delete">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <input type="submit" class="btn btn-outline-info btn-block" value="Delete Item">
+      </form>
+    </div>
+  </div>
+</div>
