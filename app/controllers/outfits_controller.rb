@@ -41,7 +41,7 @@ end
   get '/outfits/:id/:slug/edit' do
     if logged_in?
       @user = User.find_by(:id => session[:user_id])
-      @outfit = Outfit.find_by_id(params[:id])
+      @outfit = @user.outfits.find_by_id(params[:id])
       @add_items = @user.items - @outfit.items
       flash[:create_item] = "You need at least one item to update your outfit"
       flash[:add_items] = "No items to show. Please add items to edit outfit"

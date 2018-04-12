@@ -53,16 +53,15 @@ class ItemsController < ApplicationController
     end
   end
 
-  patch '/items/:slug' do
+  patch '/items/:id/:slug' do
     if logged_in?
-      binding.pry
-      @user_items = Item.all.find_all{|item| item.user_id == session[:user_id]}
-      @item = @user_items.find{|item| item.slug == params[:slug]}
+      @user = User.find_by(:id => session[:user_id])
+      @item = @user.items.find_by_id(params[:id])
       if @item && @item.user == current_user
         @item.update(name: params[:name], category: params[:category], item_type: params[:item_type], color: params[:color])
-        redirect to "/items/#{@item.slug}"
+        redirect to "/items/#{@item.id}/#{@item.slug}"
       else
-        redirect to "/items/#{@item.slug}/edit"
+        redirect to "/items/#{@item.id}/#{@item.slug}/edit"
       end
     redirect to '/'
     end

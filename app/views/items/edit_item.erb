@@ -3,7 +3,7 @@
     <div class="jumbotron">
       <h2 class="display-4"><%=@item.name%></h2>
       <div class="">
-        <form action="/items/<%=@item.slug%>" method="POST">
+        <form action="/items/<%=@item.id%>/<%=@item.slug%>" method="POST">
             <input type="hidden" name="_method" value="PATCH">
             <div class="form-group">
                 <label for="name">Name</label> <br>
@@ -13,7 +13,7 @@
             <div class="form-group">
               <label for="name">Category</label> <br>
                 <div class="input-group mb-3">
-                  <select class="custom-select" id="inputGroupSelect01" name="category">
+                  <select class="custom-select" name="category">
                     <option value="shirts">Shirt</option>
                     <option value="coat">Coat</option>
                     <option value="jacket">Jacket</option>

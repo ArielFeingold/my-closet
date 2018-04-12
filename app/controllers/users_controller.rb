@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       end
     if varification.empty?
       @user = User.create(params)
-      @user.id = session[:user_id]
+      session[:user_id] = @user.id
       redirect to "/users/#{@user.id}/#{@user.slug}"
     else
       redirect to '/signup-error'
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    if self.logged_in?
+    if logged_in?
       session.destroy
       redirect to '/'
     else
@@ -72,33 +72,33 @@ class UsersController < ApplicationController
 
   get '/users/:id/:slug' do
     if logged_in?
-      @user = User.find_by(session[:id])
+      @user = User.find_by_id(params[:id])
       erb :'users/show'
     else
       redirect to '/'
     end
   end
 
-  get '/users/:slug/edit' do
+  get '/users/:id/:slug/edit' do
     if logged_in?
-      @user = User.find_by(session[:id])
+      @user = User.find_by_id(params[:id])
       erb :'users/edit_user'
     else
       redirect to '/'
     end
   end
 
-  patch '/users/:slug' do
+  patch '/users/:id/:slug' do
     if logged_in?
-      @user = User.find_by(session[:id])
-      if params[:name] != ""
-        @user.name = params[:name]
+      @user = User.find_by_id(params[:id])
+      if params[:username] != ""
+        @user.username = params[:username]
       end
       if params[:password] !=""
         @user.password = params[:password]
       end
       @user.save
-      redirect to "/users/#{@user.slug}"
+      redirect to "/users/#{@user.id}/#{@user.slug}"
     else
       redirect to '/'
     end
