@@ -2,13 +2,13 @@
   <div class="col-sm-8 ">
     <div class="jumbotron">
       <h1 class="display-4">MyOutfits</h1>
-      <%if @outfits.size == 0%>
+      <%if @user.outfits.empty?%>
         <div class="alert alert-warning" role="alert">
           You have no outfits to show, click below to create your first outfit
         </div>
       <% else %>
         <p>Choose an Outfit:</p>
-        <%@outfits.each do |outfit|%>
+        <%@user.outfits.each do |outfit|%>
         <ul class="list-group">
           <li class="list-group-item"><a href="/outfits/<%=outfit.id%>/<%=outfit.slug%>"><%=outfit.name.capitalize%></a></li>
         </ul>

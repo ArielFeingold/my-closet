@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       end
     if varification.empty?
       @user = User.create(params)
-      session[:user_id] = @user.id
+      @user.id = session[:user_id]
       redirect to "/users/#{@user.id}/#{@user.slug}"
     else
       redirect to '/signup-error'

@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
 
   get '/items/:id/:slug' do
     if logged_in?
-      @item = Item.find_by(params[:id])
+      @item = Item.find_by_id(params[:id])
       erb :'items/show'
     else
       redirect to '/'
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
 
   get '/items/:id/:slug/edit' do
     if logged_in?
-      @item = Item.find_by_slug(params[:slug])
+      @item = Item.find_by_id(params[:id])
       erb :'items/edit_item'
     else
       redirect to '/'
@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
 
   delete '/items/:id/:slug/delete' do
     if logged_in?
-      @item = Item.find_by_slug(params[:slug])
+      @item = Item.find_by_id(params[:id])
       if @item && @item.user == current_user
         @item.delete
       end
