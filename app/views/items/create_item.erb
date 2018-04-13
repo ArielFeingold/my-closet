@@ -1,22 +1,17 @@
 <div class="row justify-content-md-center ">
   <div class="col-sm-8 ">
     <div class="jumbotron">
-      <%if @user.items.empty?%>
-      <div class="alert alert-warning" role="alert"><%=flash[:create_item]%>
-        </div>
-      <% end %>
-
       <h3 class="display-4">Create Item</h3>
         <form action="/items" method="POST">
           <div class="form-group">
               <label for="name">Name</label> <br>
-              <input type="text" name="name" required/>
+              <input class="col-sm" type="text" name="name" required/>
           </div>
 
           <div class="form-group">
             <label for="name">Category</label> <br>
               <div class="input-group mb-3">
-                <select class="custom-select" id="inputGroupSelect01" name="category">
+                <select class="custom-select col-sm" id="inputGroupSelect01" name="category">
                   <option value="shirts">Shirt</option>
                   <option value="coat">Coat</option>
                   <option value="jacket">Jacket</option>
@@ -31,12 +26,12 @@
 
           <div class="form-group">
               <label for="category">Type</label> <br>
-              <input type="text" name="item_type" required/>
+              <input class="col-sm" type="text" name="item_type" required/>
           </div>
 
           <div class="form-group">
               <label for="color">color</label> <br>
-              <input type="text" name="color" required/>
+              <input class="col-sm" type="text" name="color" required/>
           </div>
 
           <input class="btn btn-info btn-block" type="submit" value="Create Item">

@@ -56,25 +56,24 @@ end
   patch '/outfits/:id/:slug' do
     if logged_in?
       @user = User.find_by(:id => session[:user_id])
-      @outfit = @user.outfits.find{|outfit| outfit.id == params[:id]}
+      @outfit = Outfit.find_by_id(params[:id])
       @delete = params[:outfit][:delete_items]
       @add = params[:outfit][:add_items]
-      @items = @outfit.items
 
       if @outfit && @outfit.user == current_user
         @outfit.update(name: params[:outfit][:name])
         if @delete != nil
           @delete.each do |i|
             item = Item.find_by(:id => i)
-            @items.delete(item)
+            @outfit.items.delete(item)
           end
         end
         if @add != nil
           @add.each do |i|
             item = Item.find_by(:id => i)
 
-            if !@items.include?(item)
-              @items << item
+            if !@outfit.items.include?(item)
+              @outfit.items << item
             end
           end
         end

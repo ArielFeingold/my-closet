@@ -2,6 +2,10 @@
   margin-top:3px;
 }
 
+.form-group{
+  width: 100%;
+}
+
 .edit-add{
     font-size: 0.7em;
 }
